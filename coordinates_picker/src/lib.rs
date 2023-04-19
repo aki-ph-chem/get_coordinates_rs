@@ -1,6 +1,5 @@
 //! メインの機能は`run()`に実装している。 
 //! 
-use std::error::Error;
 use std::fs::File;
 use std::io::Write;
 
@@ -26,21 +25,19 @@ pub use crate::split_line::*;
 /// `Vec<Vec<String>>`を返す
 ///
 ///
-pub fn run(config: Config) -> Result<Vec<Vec<String>>,Box<dyn Error>> {
+pub fn run(config: Config) -> Result<Vec<Vec<String>>,&'static str>{
     let key = "Standard orientation:";
     let key_position = KeyPosition::new(config.input_file, key);
 
-    let key_position_max = key_position.key_position.iter()
-        .rev()
-        .next()
-        .unwrap();
-
-    //println!("key_point_max + 6 = {}", key_position_max + 6);
     let mut vec_string: Vec<Vec<String>> = vec![];
-    for i in (key_position_max + 5)..(config.atoms as usize + key_position_max + 5) {
-        //println!("key_position.lines[{}] = {}",i, key_position.lines[i]);
-        vec_string.push(get_num_string(key_position.lines[i].clone()));
-    }
+    if let Some(key_position_max) = key_position.key_position.iter().rev().next() 
+            {
+                for i in (key_position_max + 5)..(config.atoms as usize + key_position_max + 5) {
+                    vec_string.push(get_num_string(key_position.lines[i].clone()));
+                }
+            } else {
+                return Err("keyword `Standard orientation:` is not found in this file");
+            }
 
     Ok(vec_string)
 }
