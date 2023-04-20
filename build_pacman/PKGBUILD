@@ -1,0 +1,44 @@
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
+# Maintainer: Your Name <youremail@domain.com>
+pkgname=coordinates_picker
+pkgver=1.0
+pkgrel=1
+epoch=
+pkgdesc="Tool to get optimized coordinates from *.LOG file"
+arch=('x86_64')
+url=""
+license=('MIT')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("$pkgname-$pkgver.tar.gz")
+noextract=()
+md5sums=()
+validpgpkeys=()
+
+build() {
+    cd "${srcdir}"/"${pkgname}-${pkgver}"
+    cargo build --release --locked
+}
+
+package() {
+    cd "${srcdir}"/"${pkgname}-${pkgver}"
+    cp "target/release/${pkgname}" "target/release/pick_co"
+    install -Dm755 "target/release/pick_co" -t "${pkgdir}/usr/bin/"
+}
+sha256sums=('aff570e97a28184299c14037f7c385cdaec9ce1dfbe3533da4c28cc70d977efe')
+sha256sums=('04c690227f22af53be39120ef5bdaaec28ba9f8944f457f382c5902195099272')
+sha256sums=('3263fa4c06a2f8e7248d48e9e0120a91feb742a6fc294254d5d01f13cac31487')
