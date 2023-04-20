@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 pkgname="coordinates_picker"
-pkgver=1.0
+pkgver=1.1
 tarballname="${pkgname}-${pkgver}"
 pkgname="${tarballname}-1-x86_64"
 

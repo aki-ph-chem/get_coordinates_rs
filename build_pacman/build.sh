@@ -3,7 +3,7 @@
 src="coordinates_picker"
 
 pkgname="coordinates_picker"
-pkgver=1.0
+pkgver=1.1
 tarballname="${pkgname}-${pkgver}"
 
 if [ ! -e "${tarballname}" ]; then
