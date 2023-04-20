@@ -28,7 +28,7 @@ fn main(){
         },
     };
 
-    if let Err(e) = c_rs::out_put_to_file(config, coordinates) {
+    if let Err(e) = c_rs::out_put_to_file(config, &coordinates) {
         eprintln!("Error: {}", e);
         process::exit(1);
     }
