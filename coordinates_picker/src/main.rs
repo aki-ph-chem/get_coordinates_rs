@@ -28,6 +28,8 @@ fn main(){
         },
     };
 
-    //c_rs::print_2d_vec_test(coordinates);
-    c_rs::out_put_file(config, coordinates); 
+    if let Err(e) = c_rs::out_put_to_file(config, coordinates) {
+        eprintln!("Error: {}", e);
+        process::exit(1);
+    }
 }

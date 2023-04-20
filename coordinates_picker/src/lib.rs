@@ -1,7 +1,7 @@
 //! メインの機能は`run()`に実装している。 
 //! 
 use std::fs::File;
-use std::io::Write;
+use std::io::{Write,Error};
 
 // コマンドライン引数を読み取る
 pub mod get_args;
@@ -53,10 +53,11 @@ pub fn print_2d_vec_test(vec_2d: Vec<Vec<String>>) {
 /// `run()`で生成した二次元配列`Vec<Vec<String>>`を*csvとしてファイルに出力するための関数
 /// 
 ///
-pub fn out_put_file(config: Config, coo: Vec<Vec<String>>) {
+pub fn out_put_to_file(config: Config, coo: Vec<Vec<String>>) -> Result<(),Error> {
     let mut file = File::create(config.output_file).expect("file not found");
         for vec in coo {
-            writeln!(file, "{}, {}, {}, {}, {}, {}",
-                     vec[0], vec[1], vec[2], vec[3], vec[4], vec[5]);
+            writeln!(file, "{},{},{},{},{},{}",
+                     vec[0], vec[1], vec[2], vec[3], vec[4], vec[5])?;
         }
+        Ok(())
 }
