@@ -53,11 +53,18 @@ pub fn print_2d_vec_test(vec_2d: Vec<Vec<String>>) {
 /// `run()`で生成した二次元配列`Vec<Vec<String>>`を*csvとしてファイルに出力するための関数
 /// 
 ///
-pub fn out_put_to_file(config: Config, coo: Vec<Vec<String>>) -> Result<(),Error> {
-    let mut file = File::create(config.output_file).expect("file not found");
+pub fn out_put_to_file(config: Config, coo: &Vec<Vec<String>>) -> Result<(),Error> {
+    if let Some(output_file) = &config.output_file {
+        let mut file = File::create(output_file).expect("file not found");
         for vec in coo {
             writeln!(file, "{},{},{},{},{},{}",
                      vec[0], vec[1], vec[2], vec[3], vec[4], vec[5])?;
         }
-        Ok(())
+    }else{
+        for vec in coo {
+            println!("{},{},{},{},{},{}",
+                     vec[0], vec[1], vec[2], vec[3], vec[4], vec[5]);
+        }
+    }
+    Ok(())
 }
