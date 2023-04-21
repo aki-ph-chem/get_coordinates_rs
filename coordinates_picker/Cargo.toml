@@ -1,5 +1,8 @@
 [package]
 name = "coordinates_picker"
+authors = ["Aki <my_mail@aki.com>"]
+license = "MIT"
+description = "a tool to extract the optimized coordinates from Gaussian *LOG files"
 version = "0.1.0"
 edition = "2021"
 
