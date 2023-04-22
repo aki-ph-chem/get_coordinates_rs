@@ -7,7 +7,7 @@ echo 'set -o vi' >> .bashrc
 # install Rust & Cargo
 which curl > /dev/null 2>&1
 if [ $? -ne 0 ];then
-	apt install -y curl
+    sudo pacman -S curl --noconfirm
 fi
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -15,7 +15,4 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 echo 'PATH=$PATH:$HOME/.cargo/bin' >> .bashrc
 
 # update
-/root/.cargo/bin/rustup update
-
-# install cargo-deb
-/root/.cargo/bin/cargo install cargo-deb 
+~/.cargo/bin/rustup update

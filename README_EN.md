@@ -14,7 +14,7 @@ $ cargo build --release
 
 The built binary will be located at `target/release/coordinates_picker`. Move it to a directory in your path.
 
-For Arch Linux users, there is a script for packaging `build_pacman` ([here](./build_pacman)). Use it to build and install the package.
+For Arch-based Linux users, there is a script for packaging `build_pacman` ([here](./build_pacman)). Use it to build and install the package.
 
 Here is an example using the helper script `build.sh`:
 
@@ -22,6 +22,16 @@ Here is an example using the helper script `build.sh`:
 $ cd build_pacman 
 $ ./build.sh
 ```
+
+For Debian-based Linux distribution user, there is a script for packaging `build_dpkg` ([here](./build_dpkg)). Use it to build and install the package.
+
+```bash
+$ cd build_dpkg
+$ ./build.sh
+```
+If you want to perform container-based builds, you can use `build_pacman/config`
+for Arch-based system or the `build_dpkg/config` 
+for Debian-based systems, which contain scripts to set up the container environment.
 
 ## Usage
 
