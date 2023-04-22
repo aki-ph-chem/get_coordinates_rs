@@ -36,7 +36,6 @@ build() {
 
 package() {
     cd "${srcdir}"/"${pkgname}-${pkgver}"
-    cp "target/release/${pkgname}" "target/release/pick_co"
     install -Dm755 "target/release/pick_co" -t "${pkgdir}/usr/bin/"
 }
 sha256sums=('aff570e97a28184299c14037f7c385cdaec9ce1dfbe3533da4c28cc70d977efe')
