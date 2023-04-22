@@ -26,6 +26,16 @@ $ cd build_pacman
 $ ./build.sh
 ```
 
+Debian系のディストリビューションのユーザーなら`build_dpkg`([ここ](./build_dpkg))にビルドスクリプト群があるのでそれを使ってビルドしてください。
+
+```bash
+$ cd build_dpkg
+$ ./build.sh
+```
+
+もしコンテナを用いたビルドを行いたければ、Arch系向けには`build_pacman/config`に、
+Debian系向けには`build_dpkg/config`にコンテナ環境を構築するためのスクリプト群が置いてあります。
+
 ## 使い方
 
 `build_pacman`にあるスクリプトを用いてインストールした場合では利用できるコマンド名は`pick_co`です。(別の方法でインストールした場合では異なります(自分で設定が可能))
