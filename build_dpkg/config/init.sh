@@ -5,7 +5,7 @@ fi
 echo 'set -o vi' >> .bashrc
 
 # install Rust & Cargo
-curl > /dev/null 2>&1
+which curl > /dev/null 2>&1
 if [ $? -ne 0 ];then
 	apt install -y curl
 fi
