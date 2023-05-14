@@ -56,11 +56,15 @@ pub fn print_2d_vec_test(vec_2d: Vec<Vec<String>>) {
 pub fn out_put_to_file(config: Config, coo: &Vec<Vec<String>>) -> Result<(),Error> {
     if let Some(output_file) = &config.output_file {
         let mut file = File::create(output_file).expect("file not found");
+        writeln!(file, "{},{},{},{},{},{}",
+                 "No", "atomic_number", "charge", "x", "y", "z")?;
         for vec in coo {
             writeln!(file, "{},{},{},{},{},{}",
                      vec[0], vec[1], vec[2], vec[3], vec[4], vec[5])?;
         }
     }else{
+        println!("{},{},{},{},{},{}",
+                 "No", "atomic_number", "charge", "x", "y", "z");
         for vec in coo {
             println!("{},{},{},{},{},{}",
                      vec[0], vec[1], vec[2], vec[3], vec[4], vec[5]);
